@@ -1,21 +1,17 @@
 import { model, Schema } from "mongoose";
-import { User } from "./User";
-import { Transaction } from "./Transaction";
 
 const balanceSchema = new Schema({
   user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
     required: true,
-    unique: true,
   },
   balance: {
     type: String,
     required: true,
+    default: 0,
   },
 });
 
 const Balance = model("balance", balanceSchema);
 export { Balance };
-// const balanceSchema = new Schema({
-//     User,
-//     Transaction
-// })

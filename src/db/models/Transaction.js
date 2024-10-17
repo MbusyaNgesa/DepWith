@@ -2,12 +2,18 @@ import { model, Schema } from "mongoose";
 
 const transactionSchema = new Schema(
   {
-    username: {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
-      unique: true,
     },
-    balance: {
+    amount: {
       type: String,
+      required: true,
+    },
+    transactiontype: {
+      type: String,
+      enum: ["Deposit", "Withdrawal"],
       required: true,
     },
   },
